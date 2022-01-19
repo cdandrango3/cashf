@@ -58,8 +58,8 @@ $request=Yii::$app->request->post('FacturaBody');
             ])?>
             <br>
             <?=$form->field($ven[0],"id")->dropDownList($listruc,['prompt'=>'Select...',"id"=>"dop1"])->label("Persona");?>
-
-            <?=$form->field($salesman[0],"id_ven")->dropDownList($sales,['prompt'=>'Select...',"id"=>"vendedor"])->label("vendedor");?>
+            <?= HTML::label("Vendedor",["id"=>"ven"])?>
+            <?=$form->field($salesman[0],"id_ven")->dropDownList($sales,['prompt'=>'Select...',"id"=>"vendedor"])->label(false);?>
 
             <?= $form->field($model, 'Entregado')->checkBox(['label' => 'entregado']);  ?>
 
@@ -180,6 +180,8 @@ Modal::end();
         tipo=$(this).val()
         if (tipo=="Proveedor") {
             $("#vendedor").hide()
+            $("#vendedor").val("")
+            $("#ven").hide()
                 $(".preu").val("");
         }
         else{

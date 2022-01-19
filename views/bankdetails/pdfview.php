@@ -6,8 +6,42 @@ use app\models\ChartAccounts;
 use app\models\Person;
 
 $person=Person::findOne(["id"=>$model2->person_id]);
-$chart_account=ChartAccounts::findOne(["id"=>$charge->chart_account])
+$chart_account=ChartAccounts::findOne(["id"=>$charge->chart_account]);
+$isas=$_GET["isbody"];
+
 ?>
+
+        <table border="0" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:9pt">
+
+            <tr>
+                <td>
+                    <div><h4><?=$person->commercial_name?></h4></div></td>
+                </td>
+                <td>
+                    <div align="right"> &nbsp;&nbsp; &nbsp;&nbsp;<?= $model2->type_charge ?></div></td>
+
+
+            </tr>
+
+            <tr>
+                <td>
+                    &nbsp; &nbsp;        &nbsp;           &nbsp;   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                      <div align="right">Fecha de impresion:   <?= date('d-m-Y');?></div></td>
+
+            </tr>
+
+
+        </table>
+
+
+
+
+
+
+
+<br>
 <div align="center">Comprobante de Ingreso: #<?= $charge->comprobante ?><h1></h1></div>
 <table border="0" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:9pt">
     <tr>
@@ -34,7 +68,7 @@ $chart_account=ChartAccounts::findOne(["id"=>$charge->chart_account])
 </table>
 <br>
 <br>
-<table border="1" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:10pt">
+<table border="1" cellpadding="4" cellspacing="0" style="width:100%;font-family: Arial;font-size:10pt">
 <thead>
 <tr>
 <td>Documentos</td>
@@ -52,11 +86,18 @@ $chart_account=ChartAccounts::findOne(["id"=>$charge->chart_account])
     <td><?= $charge->saldo ?></td>
     <td><?= $charge->amount ?></td>
 </tr>
+<tr>
+    <td colspan="3"><div align="right">Total</div></td>
+    <td><?=$charge->saldo?></td>
+    <td><?=$charge->amount?></td>
+</tr>
 </tbody>
+
 </table>
+<?php if($isas):?>
         <br>
         <b><u><i> Detalle del Asiento</i><u></b>
-        <table border="1" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:10pt">
+        <table border="1" cellpadding="2" cellspacing="0" style="width:100%;font-family: Arial;font-size:10pt">
             <thead>
             <tr>
                 <th class="text-center" style="width:100%">Cuenta</th>
@@ -113,22 +154,25 @@ $chart_account=ChartAccounts::findOne(["id"=>$charge->chart_account])
         <br>
         <br>
 
-        <table border="0" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:9pt">
-            <tr>
-                <td>
-                    ___________________________________<br><br>
-                    Elaborado por:<br><br>
-                    Cédula:
-                </td>
-                <td>
-                    ___________________________________<br><br>
-                    Aprobado por:<br><br>
-                    Cédula:
-                </td>
-                <td>
-                    ___________________________________<br><br>
-                    Revisado por:<br><br>
-                    Cédula:
-                </td>
-            </tr>
-        </table>
+
+    <?php endif?>
+<br><br><br><br><br>
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%;font-family: Arial;font-size:9pt">
+    <tr>
+        <td>
+            ___________________________________<br><br>
+            Elaborado por:<br><br>
+            Cédula:
+        </td>
+        <td>
+            ___________________________________<br><br>
+            Aprobado por:<br><br>
+            Cédula:
+        </td>
+        <td>
+            ___________________________________<br><br>
+            Revisado por:<br><br>
+            Cédula:
+        </td>
+    </tr>
+</table>

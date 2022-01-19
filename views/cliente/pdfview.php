@@ -24,7 +24,6 @@ $sale=Person::findOne(["id"=>$model->id_saleman])
 
     <tr>
         <td>
-            &nbsp; &nbsp;        &nbsp;           &nbsp;   &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
         </td>
         <td>
             <div align="right">Fecha de impresion:   <?= date('d-m-Y');?></div></td>

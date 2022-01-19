@@ -2,6 +2,7 @@
 /* @var $model2 app\models\BankdetailsSearch */
 
 ?>
+<?= $this->render('searcht',["model"=>$model]) ?>
 <table class="table table-striped table-bordered ">
     <thead class="bg-white">
     <tr>
@@ -13,7 +14,7 @@
         <td>Total</td>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="ui">
     <?php
 
     use yii\helpers\Html;
@@ -21,7 +22,6 @@
 
 
     foreach($transaccion as $tran):?>
-    <tr>
         <?php
         $tipo=\app\models\Charges::findOne($tran->id_charge);
         $person=\app\models\Person::findOne($tipo->person_id);
@@ -29,6 +29,7 @@
         $chart=\app\models\ChartAccounts::findOne($tran->chart_account);
         yii::debug($chart)
         ?>
+    <tr>
         <td><?= $tran->date ?></td>
         <td><?= HTML::a($tran->comprobante,Url::to(["detail", "id"=>$tran->comprobante])) ?> </td>
         <td><?= $person->name ?></td>
@@ -41,3 +42,33 @@
 
     </tbody>
 </table>
+
+<?php
+$js=<<< JS
+    $('#nfac').keyup(function(){
+        c=$(this).val();
+        $.ajax({
+        method: "POST",
+            url: 'getdata?get='+c,
+            success: function(data) {
+            console.log(data)
+                 $('#ui').html(data)   
+            }
+        })
+    });
+$('#personas').change(function(){
+        c=$(this).val();
+        console.log(c)
+        $.ajax({
+        method: "POST",
+            url: 'getper?ge='+c,
+            success: function(data) {
+            console.log(data)
+                 $('#ui').html(data)   
+            }
+        })
+    });
+JS;
+
+$this->registerJs($js);
+?>

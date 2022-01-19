@@ -67,9 +67,12 @@ $this->registerCss("");
                 <?= "Persona:".$personam->name?>
             </div>
                 </tr>
+                <?php if(!is_null($salesman)):?>
             <tr>
                 <?= "Vendedor:".$salesman->name?>
             </tr>
+
+                <?php endif ?>
         </div>
     </div>
     </div>

@@ -11,7 +11,18 @@ $person=Person::findOne(["id"=>$model2->person_id]);
 $char=ChartAccounts::findOne(["id"=>$transaccion->chart_account]);
 
 ?>
-<div class="float-right"> <?= HTML::a("pdf",Url::to(["pdfview","com"=>$transaccion->comprobante]),["class"=>"btn btn-primary"])?> </div>
+<div class="dropdown show text-right">
+    <a class="btn btn-default dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-file-pdf text-red"></i>
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a href='<?=Url::to(["pdfview","com"=>$transaccion->comprobante,"isbody"=>1])?>'class="btn btn-default" target="_blank" title="Exportar a pdf" data-toggle="tooltip"> Pdf con asiento</a>
+        <br>
+        <a href='<?=Url::to(["pdfview","com"=>$transaccion->comprobante,"isbody"=>0])?>'class="btn btn-default" target="_blank" title="Exportar a pdf" data-toggle="tooltip"> Pdf sin asiento</a>
+    </div>
+
+</div>
 <div class="row">
 
 </div>
